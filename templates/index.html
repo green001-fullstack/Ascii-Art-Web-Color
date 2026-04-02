@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Ascii Art Generator</title>
+</head>
+<body>
+    <div class="animation">
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+        <div class="child">
+            <h1>ASCII ART</h1>
+        </div>
+    </div>
+    <div class="header">
+        <h1 class="header-text">Ascii Art Generator</h1>
+     </div>
+    <div class="center">
+          <h2>Generate Your Art</h2>
+             <form method="POST" action="/ascii" class="form-flex">
+           <!-- <input type="text" name="text" placeholder="Enter text"> -->
+            <textarea class="textarea" name="text" placeholder="Enter Text"></textarea>
+            <select name="banner" class="options">
+               <option value="standard">standard</option>
+               <option value="shadow">shadow</option>
+               <option value="thinkertoy">thinkertoy</option>
+            </select>
+            <button class="button">Generate</button>
+        </form>
+        <section class="output">
+            <pre>{{.Output}}</pre>
+        </section>
+        <form class="download" method="POST" action="/download">
+            <p class="message-paragraph">{{.Message}}</p>
+            <button class="download-btn" type="submit">Download Art</button>
+            <textarea class="download-output" name="ascii" hidden>{{.Output}}</textarea>
+        </form>
+    </div>
+</body>
+</html>
