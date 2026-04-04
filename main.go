@@ -21,6 +21,8 @@ type PageData struct{
 	Output string;
 	Message string;
 	Text string;
+	Substring string;
+	Color string
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -89,7 +91,7 @@ func asciiHandler(w http.ResponseWriter, r *http.Request){
 	}
 
 	// log.Println("ASCII output:\n", asciiArt.String())	
-	data := PageData{Output: asciiArt.String(), Message: "",  Text: text}
+	data := PageData{Output: asciiArt.String(), Message: "",  Text: text, Substring: substring, Color: color}
 	tmpl.ExecuteTemplate(w, "index.html", data)
 }
 
