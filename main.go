@@ -20,6 +20,7 @@ var tmpl = template.Must(template.New("").Funcs(funcMap).ParseFiles("templates/i
 type PageData struct{
 	Output string;
 	Message string;
+	Text string;
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -59,10 +60,10 @@ func asciiHandler(w http.ResponseWriter, r *http.Request){
 	color := r.FormValue("color")
 	substring := r.FormValue("substring")
 
-	log.Println("Text:", text)
-	log.Println("Substring:", substring)
-	log.Println("Banner:", banner)
-	log.Println("Color:", color)
+	// log.Println("Text:", text)
+	// log.Println("Substring:", substring)
+	// log.Println("Banner:", banner)
+	// log.Println("Color:", color)
 
 	if strings.TrimSpace(text) == ""{
 		data := PageData{Output: "You have to provide a text"}
@@ -87,8 +88,8 @@ func asciiHandler(w http.ResponseWriter, r *http.Request){
 		asciiArt.WriteString(result)
 	}
 
-	log.Println("ASCII output:\n", asciiArt.String())	
-	data := PageData{Output: asciiArt.String()}
+	// log.Println("ASCII output:\n", asciiArt.String())	
+	data := PageData{Output: asciiArt.String(), Message: "",  Text: text}
 	tmpl.ExecuteTemplate(w, "index.html", data)
 }
 

@@ -86,7 +86,7 @@ func GenerateColor(text string, banner string, substring string, color string) (
 			if err == io.EOF {
 				break
 			}
-			return "", fmt.Errorf("Error reading:", err)
+			return "", fmt.Errorf("Error reading file")
 		}
 	}
 
@@ -97,6 +97,9 @@ func GenerateColor(text string, banner string, substring string, color string) (
 	for row := 0; row < 8; row++ {
 		var oneLineString strings.Builder
 		for i, char := range textRune{
+			if char < 32 || char > 126{
+				continue
+			}
 			start := int(char - 32) * 9 + 1
 			if mask[i] == true{
 				oneLineString.WriteString(`<span style="color:` + color +`">` + asciiRead[start + row] + `</span>`)

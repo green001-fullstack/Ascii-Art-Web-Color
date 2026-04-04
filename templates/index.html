@@ -53,7 +53,9 @@
     <div class="center">
         <h2>Generate Your Art</h2>
         <form method="POST" action="/ascii" class="form-flex">
-            <textarea class="textarea" name="text" placeholder="Enter Text"></textarea>
+            <textarea class="textarea" name="text" placeholder="Enter Text">
+                {{.Text}}
+            </textarea>
             <input class="substring-box" type="text" name="substring" placeholder="Enter text to color">
             <div class="color-banner">
                 <input name="color" type="text" class="color" placeholder="Input your color">
