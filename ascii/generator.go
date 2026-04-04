@@ -55,7 +55,7 @@ func buildMask(text string, substring string)[]bool{
 		return mask
 	}
 	for i := 0; i <= len(textSlice) - len(subStringSlice);{
-		if string(textSlice[i:i+len(subStringSlice)]) == substring{
+		if string(textSlice[i:i+len(subStringSlice)]) == substring {
 			for j := i; j < i + len(subStringSlice); j++{
 				mask[j] = true
 			}
