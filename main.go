@@ -1,7 +1,5 @@
 package main
 
-
-
 import (
 	"html/template"
 	"net/http"
@@ -11,7 +9,13 @@ import (
 )
 
 
-var tmpl = template.Must(template.ParseFiles("templates/index.html", "templates/error.html"))
+var funcMap = template.FuncMap{
+    "safeHTML": func(s string) template.HTML {
+        return template.HTML(s) // converts string to HTML safely
+    },
+}
+
+var tmpl = template.Must(template.New("").Funcs(funcMap).ParseFiles("templates/index.html", "templates/error.html"))
 
 type PageData struct{
 	Output string;
@@ -52,10 +56,17 @@ func asciiHandler(w http.ResponseWriter, r *http.Request){
 	
 	text := r.FormValue("text")
 	banner := r.FormValue("banner")
+	color := r.FormValue("color")
+	substring := r.FormValue("substring")
+
+	log.Println("Text:", text)
+	log.Println("Substring:", substring)
+	log.Println("Banner:", banner)
+	log.Println("Color:", color)
 
 	if strings.TrimSpace(text) == ""{
 		data := PageData{Output: "You have to provide a text"}
-		tmpl.Execute(w, data)
+		tmpl.ExecuteTemplate(w, "index.html", data)
 		return
 	}
 
@@ -64,14 +75,21 @@ func asciiHandler(w http.ResponseWriter, r *http.Request){
 	var asciiArt strings.Builder
 	for _, line := range text1{
 		if strings.TrimSpace(line) == ""{
-			// asciiArt.WriteString("\n")
+			asciiArt.WriteString("\n")
 			continue
 		}
-		asciiArt.WriteString(ascii.GenerateAscii(line, banner))
+		result, err := ascii.GenerateColor(line,banner, substring, color)
+		if err != nil {
+			data := PageData{Output: "", Message: err.Error()}
+    		tmpl.ExecuteTemplate(w, "index.html", data)
+			return
+		} 
+		asciiArt.WriteString(result)
 	}
-	
+
+	log.Println("ASCII output:\n", asciiArt.String())	
 	data := PageData{Output: asciiArt.String()}
-	tmpl.Execute(w, data)
+	tmpl.ExecuteTemplate(w, "index.html", data)
 }
 
 func downloadHandler( w http.ResponseWriter, r *http.Request){
