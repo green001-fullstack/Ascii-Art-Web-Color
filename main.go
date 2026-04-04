@@ -68,7 +68,7 @@ func asciiHandler(w http.ResponseWriter, r *http.Request){
 	// log.Println("Color:", color)
 
 	if strings.TrimSpace(text) == ""{
-		data := PageData{Output: "You have to provide a text"}
+		data := PageData{Message: "You have to provide a text"}
 		tmpl.ExecuteTemplate(w, "index.html", data)
 		return
 	}
