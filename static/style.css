@@ -115,14 +115,13 @@ body{
     background:linear-gradient(135deg, #00363a, #001f22,#005e64);
     background-size: 300% 300%;
     animation: gradientMove 10s ease infinite;
-    /* height: 100vh; */
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding: 150px 30px;
 }
+
 
 .header-text{
     font-family: monospace;
@@ -155,8 +154,16 @@ body{
     border: 1px solid #00ffd5;
 }
 
+.header-text{
+    font-family: 'Courier New', Courier, monospace;
+    color: #00fff5;
+    text-shadow: 0 2px 5px rgba(0, 255, 245, 0.5);
+}
+
 h2{
     font-size: 40px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     font-family: monospace;
     color: white;
 }
@@ -198,10 +205,21 @@ textarea:focus,
     width: 50%;
     height: 50px;
     padding: 15px;
-    border-radius: 10px;
-    background-color: #005e64;
+    border-radius: 15px;
+    background: rgba(0, 94, 100, 0.5);
     color: white;
-    border: 1px solid rgb(212, 212, 212);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.textarea, .substring-box, .color {
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(0, 94, 100, 0.5);
+    color: #e0ffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: monospace;
+    font-size: 20px;
+    transition: all 0.3s ease;
 }
 
 .textarea::placeholder,
@@ -217,6 +235,7 @@ textarea:focus,
 }
 
 .options{
+    cursor: pointer;
     width:50%;
     height: 50px;
     text-align: center;
@@ -285,16 +304,16 @@ textarea:hover,
 }
 
 pre{
-    line-height: 1.1;
+    line-height: 1.2;
     width: 100%;
     min-height: 150px;
     max-height: 150px;
-    overflow-x: auto;
+    overflow: auto;
     background: rgba(255, 222, 222, 0.08);
-    border: none;
+    border: 1px solid rgba(0, 255, 245, 0.5);
     color: white;
     border: 1px solid white;
-    box-shadow: inset 0 0 10px rgba(0,255,213,0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 245, 0.3) inset;
     text-align: center;
     font-family: monospace;
     border-radius: 10px;
