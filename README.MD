@@ -139,7 +139,6 @@ Output:
 
 * Go (net/http, html/template)
 * HTML5 & CSS3
-* JavaScript (minimal / optional)
 * ASCII banner files
 
 ---
@@ -147,7 +146,6 @@ Output:
 ## 📌 Future Improvements
 
 * 🎨 Color picker UI instead of manual input
-* 📱 Better mobile responsiveness
 * 💾 Save generated art history
 * 🌈 Gradient or multi-color support
 * ⚡ Caching banner files for performance
