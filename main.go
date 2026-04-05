@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"net/http"
 	"log"
+	"fmt"
 	"color/ascii"
 	"strings"
 )
@@ -11,7 +12,7 @@ import (
 
 var funcMap = template.FuncMap{
     "safeHTML": func(s string) template.HTML {
-        return template.HTML(s) // converts string to HTML safely
+        return template.HTML(s)
     },
 }
 
@@ -26,6 +27,7 @@ type PageData struct{
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("😊")
 	data := PageData{Output: ""}
 	if r.Method != http.MethodGet {
 		http.Error(w, "Only a GET request is allowed here", http.StatusMethodNotAllowed)
@@ -119,6 +121,6 @@ func main() {
 	http.HandleFunc("/ascii", asciiHandler)
 	http.HandleFunc("/download", downloadHandler)
 
-	log.Println("Server running at http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
+	log.Println("Server running at http://localhost:8001")
+	http.ListenAndServe(":8001", nil)
 }
