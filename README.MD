@@ -50,8 +50,8 @@ A web-based ASCII art generator built with **Go (Golang)** that converts user in
 ### 1. Clone the repository
 
 ```
-git clone https://github.com/your-username/ascii-art-generator.git
-cd ascii-art-generator
+git clone https://github.com/green001-fullstack/Ascii-Art-Web-Color.git
+cd ascii-art-web-color
 ```
 
 ---
